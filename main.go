@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/PuerkitoBio/goquery"
 )
 
 func main() {
@@ -28,7 +30,7 @@ func GetLatestBlogTitles(url string) (string, error) {
 	}
 
 	titles := ""
-	doc.Find(".post-title").Each(func(i int, s *goquery,Selection) {
+	doc.Find(".post-title").Each(func(i int, s *goquery.Selection) {
 		titles += "-" + s.Text() + "\n"
 	})
 	return titles, nil
